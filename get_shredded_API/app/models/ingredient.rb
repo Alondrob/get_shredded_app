@@ -1,6 +1,6 @@
 class Ingredient < ApplicationRecord
 
-    belongs_to :receipe
+    belongs_to :recipe
 
     validates :name, :weight, :carb, :protein, :fat, presence: true
     validate :macros_total_one_hundred

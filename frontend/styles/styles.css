@@ -4,3 +4,6 @@
 .recipe{
     padding-bottom: 20px;
 }
+.recipe-name{
+ cursor: pointer;
+}

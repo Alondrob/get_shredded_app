@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 2021_07_11_144102) do
     t.float "carb"
     t.float "protein"
     t.float "fat"
-    t.integer "receipe_id"
+    t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["receipe_id"], name: "index_ingredients_on_receipe_id"
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
-  create_table "receipes", force: :cascade do |t|
+  create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 2021_07_11_144102) do
 
   create_table "reviews", force: :cascade do |t|
     t.text "content"
-    t.integer "receipe_id"
+    t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["receipe_id"], name: "index_reviews_on_receipe_id"
+    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
   end
 
 end
