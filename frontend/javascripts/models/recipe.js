@@ -8,8 +8,8 @@ class Recipe {
         this.name = name
 
         Recipe.all.push(this)
-
     }
+    // render function is in charge of displaying the name of the screen, in this case recipe name
     render() {
         const div = document.createElement('div')
         div.id = `recipe-${this.id}`
@@ -24,6 +24,8 @@ class Recipe {
         const span = document.querySelector(`#recipe-${this.id} .recipe-name`)
         span.addEventListener('click', Recipe.toggle)
         div.querySelector('.add-ingredient-button').addEventListener('click', this.addForm)
+        div.querySelector('.delete-recipe-button').addEventListener('click', RecipeApi.delete)
+        
         
     }
 
@@ -36,7 +38,7 @@ class Recipe {
             }
             formContainer.innerHTML = `
                 <form class="new-ingredient-form">
-                <input type="hidden" value="${recipeId}">
+                <input type="hidden" class="recipe-id" value="${recipeId}">
                     <label for="name"> name: </label>
                     <input type="text" class="name" name="name">
                       <label for="weight"> Weight: </label>
@@ -51,6 +53,7 @@ class Recipe {
                 </form>
             `
             container.append(formContainer)
+            formContainer.querySelector(".new-ingredient-form").addEventListener("submit", IngredientApi.create)
         }
         static toggle(event) {
             const span = event.target 
@@ -66,4 +69,5 @@ class Recipe {
                 IngredientApi.fetchAll(recipeId)
             }
         }
+
 }

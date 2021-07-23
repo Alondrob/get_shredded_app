@@ -30,5 +30,17 @@ class RecipeApi {
             recipe.render()
         })
     }
+
+        static delete(event) {
+            const deleteButton = event.target
+            const recipeId = deleteButton.dataset.recipeId 
+            document.querySelector(`#recipe-${recipeId}`).remove()
+            fetch(`http://127.0.0.1:3000/recipes/${recipeId}`, {
+                method: 'delete'
+            })
+        }
+        
 }
+
+
 

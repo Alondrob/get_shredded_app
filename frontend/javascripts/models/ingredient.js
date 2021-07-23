@@ -25,7 +25,7 @@ class Ingredient{
         div.id = `ingredient-${this.id}`
         div.classList.add('ingredient')
         div.innerHTML = `
-           <p> name: ${this.name} </p>
+           <p> name: ${this.name}&nbsp;&nbsp; <button data-ingredient-id="${this.id}" class="delete-ingredient-button"> Remove Ingredient </button> </p>
            <p> weight: ${this.weight} </p>
            <p> carb: ${this.carb} </p>
            <p> protein: ${this.protein} </p>
@@ -33,6 +33,7 @@ class Ingredient{
         
         `
             container.append(div)
+        div.querySelector(".delete-ingredient-button").addEventListener('click', IngredientApi.delete)
         
     }
         

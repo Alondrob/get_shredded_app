@@ -7,3 +7,10 @@
 .recipe-name{
  cursor: pointer;
 }
+
+body {background-color: rgba(16, 226, 69, 0.575);}
+
+/* body {
+ background-image: url("https://www.freepik.com/free-vector/hand-drawn-delicious-food-background_5107183.htm#page=1&query=food%20background&position=0");
+ background-color: #cccccc;
+} */
