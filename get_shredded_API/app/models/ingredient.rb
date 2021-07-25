@@ -7,7 +7,7 @@ class Ingredient < ApplicationRecord
 
     private
     def macros_total_one_hundred
-        if self.carb + self.protein + self.fat != 1.0
+        if (self.carb + self.protein + self.fat).round(6) != 1.0
             errors.add(:base, "The macros should always add up to 100%")
         end
     end
