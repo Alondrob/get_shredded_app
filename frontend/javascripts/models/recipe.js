@@ -33,6 +33,9 @@ class Recipe {
             const recipeId = event.target.dataset.recipeId
             const container = document.querySelector(`#recipe-${recipeId}`)
             const formContainer = document.createElement('div')
+            // we create classlist on formContainer variable to add class to an element
+            // in order to target it , targeting it to manipualte it 
+            formContainer.classList.add("form-container")
             if (container.querySelector('.new-ingredient-form')){
                 return
             }
@@ -62,7 +65,10 @@ class Recipe {
                 span.classList.remove("open")
                 const ingredientsContainer = document.querySelector(`#recipe-${recipeId} .ingredients-container`)
                 ingredientsContainer.innerHTML = " "
-                
+                 const formContainer = document.querySelector(`#recipe-${recipeId} .form-container`)
+                 if (formContainer) {
+                     formContainer.remove()
+                 }
             }
             else{
                 span.classList.add("open")
