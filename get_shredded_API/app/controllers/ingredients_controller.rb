@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
         ingredient = Ingredient.create(ingredient_params)
         if !ingredient.persisted?
             puts ingredient.errors.full_messages
-            byebug
+            # byebug
         end
         render json: ingredient
     end
