@@ -3,6 +3,7 @@ class RecipeApi {
     static fetchAll() {
         fetch('http://127.0.0.1:3000/recipes')
         .then(res => res.json())
+    
             .then(recipes => recipes.forEach(recipeData => {
                 const recipe = new Recipe(recipeData)
                 recipe.render()
@@ -13,7 +14,8 @@ class RecipeApi {
         const form = event.target
         const data = {
             recipe: {
-                name: form.querySelector(".name").value
+                name: form.querySelector(".name").value,
+                image: form.querySelector(".image").value
             }
         }
         newRecipeForm().reset()

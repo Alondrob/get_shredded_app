@@ -3,7 +3,7 @@ class Ingredient{
 
     static all = []
 
-    constructor( {id, name, weight, carb, protein, fat, recipe_id}){
+    constructor( {id, name, weight, carb, protein, fat, recipe_id}) {
         this.id = id
         this.name = name
         this.weight = weight

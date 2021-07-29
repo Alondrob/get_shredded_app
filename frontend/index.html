@@ -10,6 +10,8 @@
     <script src="./javascripts/models/recipe.js"></script>
     <script src="./javascripts/models/ingredient.js"></script>
     <script src='./javascripts/services/ingredientApi.js'></script>
+    <script src="./javascripts/models/review.js"></script>
+    <script src="./javascripts/services/reviewApi.js"></script>
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
@@ -17,6 +19,7 @@
     <form id="new-recipe-form">
         <label for="name"> Recipe Name </label>
         <input type="text" class="name" name="name">
+        <input type="text" class ="image" name="image" >
         <input type="submit">
     </form>
     <div id="recipes-container"></div>

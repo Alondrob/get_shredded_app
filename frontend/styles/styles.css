@@ -8,7 +8,13 @@
  cursor: pointer;
 }
 
-body {background-color: rgba(16, 226, 69, 0.575);}
+body {background-color: rgba(211, 9, 52, 0.171);}
+
+h1 {
+    text-align: center;
+}
+
+label {color: blueviolet;}
 
 /* body {
  background-image: url("https://www.freepik.com/free-vector/hand-drawn-delicious-food-background_5107183.htm#page=1&query=food%20background&position=0");

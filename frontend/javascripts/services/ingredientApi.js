@@ -36,7 +36,7 @@ class IngredientApi {
             .then( res => res.json())
             .then(ingredientData => {
                 const ingredient = new Ingredient(ingredientData)
-                // ingredient.render()
+                ingredient.render()
             } )
     }
     static delete(event) {
