@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
     def index
-        recipes = Recipe.all
+        recipes = Recipe.includes(:ingredients)
         render json: recipes
     end
 

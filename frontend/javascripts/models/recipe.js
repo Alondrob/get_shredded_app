@@ -4,10 +4,11 @@ class Recipe {
     // how the static all =[] works 
     static all = []
 
-    constructor( {id, name, image}){
+    constructor( {id, name, image, total_calories}){
         this.id = id
         this.name = name
         this.image = image
+        this.totalCalories = total_calories
 
         Recipe.all.push(this)
     }
@@ -18,7 +19,7 @@ class Recipe {
         div.classList.add('recipe')
         div.innerHTML = `
             <img src="${this.image}" alt="${this.name}" width="500" />
-            <h3> <span data-recipe-id="${this.id}" class="recipe-name"> ${this.name} </span> </h3>
+            <h3> <span data-recipe-id="${this.id}" class="recipe-name"> ${this.name} => Calories:  ${this.totalCalories} </span> </h3>
             <button type="button" data-recipe-id="${this.id}" class="add-ingredient-button"> Add Ingredient </button>
             <button type="button" data-recipe-id="${this.id}" class="delete-recipe-button"> Delete Recipe</button>
             <button type="button" data-recipe-id="${this.id}" class="add-review-button"> Write A Review </button>

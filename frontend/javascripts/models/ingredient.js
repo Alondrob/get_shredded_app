@@ -3,13 +3,14 @@ class Ingredient{
 
     static all = []
 
-    constructor( {id, name, weight, carb, protein, fat, recipe_id}) {
+    constructor( {id, name, weight, carb, protein, fat, calories, recipe_id}) {
         this.id = id
         this.name = name
         this.weight = weight
         this.carb = carb
         this.protein = protein
         this.fat = fat
+        this.calories = calories
         this.recipeId = recipe_id
 
         Ingredient.all.push(this)
@@ -79,13 +80,14 @@ class Ingredient{
             return Ingredient.all.find(ingredient => ingredient.id === parseInt(id))
         }
 
-    set({ id, name, weight, carb, protein, fat, recipe_id }) {
+    set({ id, name, weight, carb, protein, fat, calories, recipe_id }) {
             this.id = id
             this.name = name
             this.weight = weight
             this.carb = carb
             this.protein = protein
             this.fat = fat
+            this.calories = calories 
             this.recipeId = recipe_id
 
         }
