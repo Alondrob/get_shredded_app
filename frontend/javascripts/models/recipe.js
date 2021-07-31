@@ -4,11 +4,12 @@ class Recipe {
     // how the static all =[] works 
     static all = []
 
-    constructor( {id, name, image, total_calories}){
+    constructor( {id, name, image, total_calories, instructions}){
         this.id = id
         this.name = name
         this.image = image
         this.totalCalories = total_calories
+        this.instructions = instructions
 
         Recipe.all.push(this)
     }
@@ -17,16 +18,23 @@ class Recipe {
         const div = document.createElement('div')
         div.id = `recipe-${this.id}`
         div.classList.add('recipe')
-        div.innerHTML = `
-            <img src="${this.image}" alt="${this.name}" width="500" />
-            <h3> <span data-recipe-id="${this.id}" class="recipe-name"> ${this.name} => Calories:  ${this.totalCalories} </span> </h3>
+        div.innerHTML = ` <h3> <span data-recipe-id="${this.id}" class="recipe-name"> ${this.name} => Calories:  ${this.totalCalories} </span> </h3>`
+        if (this.image) {
+            div.innerHTML += `<img src="${this.image}" alt="${this.name}" width="500" /><br>`
+        }
+        div.innerHTML += `
+            
+           
             <button type="button" data-recipe-id="${this.id}" class="add-ingredient-button"> Add Ingredient </button>
             <button type="button" data-recipe-id="${this.id}" class="delete-recipe-button"> Delete Recipe</button>
-            <button type="button" data-recipe-id="${this.id}" class="add-review-button"> Write A Review </button>
+             <button type="button" data-recipe-id="${this.id}" class="add-review-button"> Write A Review </button>
             <button type="button" data-recipe-id="${this.id}" 
             class="get-review-button"> Get Reviews </button>
+            <button type="button" data-recipe-id="${this.id}"
+            class="show-instructions-button"> Instructions </button>
             <div class="reviews-container"></div>
             <div class="ingredients-container"></div>
+            <div class="instructions-container"></div>
             
 
 
@@ -38,6 +46,7 @@ class Recipe {
         div.querySelector('.delete-recipe-button').addEventListener('click', RecipeApi.delete)
         div.querySelector('.get-review-button').addEventListener('click', ReviewApi.fetchAll)
         div.querySelector('.add-review-button').addEventListener('click', this.addReviewForm)
+        div.querySelector('.show-instructions-button').addEventListener('click', this.showInstructions)
         
         
     }
@@ -118,4 +127,26 @@ class Recipe {
             }
         }
 
+    static findById(id) {
+        return Recipe.all.find(recipe => recipe.id === parseInt(id))
+    }
+
+
+        showInstructions(event) {
+            const recipeId = event.target.dataset.recipeId
+            const recipe = Recipe.findById(recipeId)
+            const recipeContainer = document.querySelector(`#recipe-${recipeId}`)
+            const instructionsContainer = recipeContainer.querySelector('.instructions-container')
+            if(instructionsContainer.classList.contains('open')) {
+                instructionsContainer.classList.remove('open')
+                instructionsContainer.innerHTML = ""
+            } else {
+                instructionsContainer.classList.add('open')
+                instructionsContainer.innerHTML = `
+                <p class="recipe-instruction"> ${recipe.instructions} </p>
+                `
+            }
+            
+
+        }
 }

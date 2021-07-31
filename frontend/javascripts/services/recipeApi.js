@@ -15,7 +15,8 @@ class RecipeApi {
         const data = {
             recipe: {
                 name: form.querySelector(".name").value,
-                image: form.querySelector(".image").value
+                image: form.querySelector(".image").value,
+                instructions: form.querySelector(".instructions").value
             }
         }
         newRecipeForm().reset()

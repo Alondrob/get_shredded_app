@@ -3,6 +3,8 @@
 }
 .recipe{
     padding-bottom: 20px;
+    border-bottom: 5px solid black;
+    text-align: center;
 }
 .recipe-name{
  cursor: pointer;
@@ -15,6 +17,30 @@ h1 {
 }
 
 label {color: blueviolet;}
+
+.recipe-instruction {
+    color: black;
+    max-width: 500px;
+}
+
+#new-recipe-form {
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 5px solid black;
+}
+
+.add-ingredient-button {
+    font-size: 16px;
+    background-color: cadetblue;
+    padding: 20px;
+    border-radius: 50px;
+    color: cornsilk;
+}
+
+input[type="submit"] {
+    background-color: darkgoldenrod;
+    font-style: oblique;
+}
 
 /* body {
  background-image: url("https://www.freepik.com/free-vector/hand-drawn-delicious-food-background_5107183.htm#page=1&query=food%20background&position=0");

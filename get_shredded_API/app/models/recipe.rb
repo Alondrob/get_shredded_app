@@ -3,7 +3,7 @@ class Recipe < ApplicationRecord
     has_many :ingredients, dependent: :destroy
     has_many :reviews, dependent: :destroy
 
-    validates :name, presence: true
+    validates :name, :instructions, presence: true
 
     def total_calories
         self.ingredients.map {|ingredient| ingredient.calories}.sum
