@@ -8,10 +8,10 @@ class IngredientsController < ApplicationController
 
     def create
         ingredient = Ingredient.create(ingredient_params)
-        if !ingredient.persisted?
-            puts ingredient.errors.full_messages
-            # byebug
-        end
+        # if !ingredient.persisted?
+        #     puts ingredient.errors.full_messages
+        #     # byebug
+        # end
         render json: ingredient
     end
 

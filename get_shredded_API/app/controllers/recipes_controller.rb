@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
 
     def index
         recipes = Recipe.includes(:ingredients)
+        # binding.pry
         render json: recipes
     end
 

@@ -19,9 +19,4 @@ class Ingredient < ApplicationRecord
     end
 end
 
-# weight = 200
-# carb = 0.4
-# fat = 0.5
-# protein = 0.1
 
-# (.4 * 200 * 4) + .5*200*9 +.1*200*4
