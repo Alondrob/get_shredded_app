@@ -14,24 +14,43 @@ class Recipe {
         Recipe.all.push(this)
     }
     // render function is in charge of displaying the name of the screen, in this case recipe name
-    render() {
-        const div = document.createElement('div')
-        div.id = `recipe-${this.id}`
-        div.classList.add('recipe')
-        div.innerHTML = ` <h3> <span data-recipe-id="${this.id}" class="recipe-name"> ${this.name} => Calories:  ${this.totalCalories} </span> </h3>`
+    renderRecipes() {
+        const divElm = document.createElement('div')
+        divElm.id = `recipe-${this.id}`
+        divElm.classList.add('recipe')
+        divElm.innerHTML = `
+            <h3> 
+                <span data-recipe-id="${this.id}" class="recipe-name">
+                    ${this.name} => Calories:  ${this.totalCalories}
+                </span>
+            </h3>
+        `
         if (this.image) {
-            div.innerHTML += `<img src="${this.image}" alt="${this.name}" width="500" /><br>`
+            divElm.innerHTML += `<img src="${this.image}" alt="${this.name}" width="500" /><br>`
         }
-        div.innerHTML += `
+        divElm.innerHTML += `
             
            
-            <button type="button" data-recipe-id="${this.id}" class="add-ingredient-button"> Add Ingredient </button>
-            <button type="button" data-recipe-id="${this.id}" class="delete-recipe-button"> Delete Recipe</button>
-             <button type="button" data-recipe-id="${this.id}" class="add-review-button"> Write A Review </button>
-            <button type="button" data-recipe-id="${this.id}" 
-            class="get-review-button"> Get Reviews </button>
-            <button type="button" data-recipe-id="${this.id}"
-            class="show-instructions-button"> Instructions </button>
+            <button type="button" data-recipe-id="${this.id}" class="add-ingredient-button"> 
+                Add Ingredient
+            </button>
+
+            <button type="button" data-recipe-id="${this.id}" class="delete-recipe-button">
+                Delete Recipe
+            </button>
+
+            <button type="button" data-recipe-id="${this.id}" class="add-review-button">
+                 Write A Review 
+            </button>
+
+            <button type="button" data-recipe-id="${this.id}" class="get-review-button">
+                Get Reviews
+            </button>
+
+            <button type="button" data-recipe-id="${this.id}" class="show-instructions-button">
+                Instructions
+            </button>
+
             <div class="reviews-container"></div>
             <div class="ingredients-container"></div>
             <div class="instructions-container"></div>
@@ -39,14 +58,14 @@ class Recipe {
 
 
         `
-        recipesContainer().append(div)
-        const span = document.querySelector(`#recipe-${this.id} .recipe-name`)
-        span.addEventListener('click', Recipe.toggle)
-        div.querySelector('.add-ingredient-button').addEventListener('click', this.addForm)
-        div.querySelector('.delete-recipe-button').addEventListener('click', RecipeApi.delete)
-        div.querySelector('.get-review-button').addEventListener('click', ReviewApi.fetchAll)
-        div.querySelector('.add-review-button').addEventListener('click', this.addReviewForm)
-        div.querySelector('.show-instructions-button').addEventListener('click', this.showInstructions)
+        recipesContainer().append(divElm)
+        const spanElm = document.querySelector(`#recipe-${this.id} .recipe-name`)
+        spanElm.addEventListener('click', Recipe.toggle)
+        divElm.querySelector('.add-ingredient-button').addEventListener('click', this.addForm)
+        divElm.querySelector('.delete-recipe-button').addEventListener('click', RecipeApi.delete)
+        divElm.querySelector('.get-review-button').addEventListener('click', ReviewApi.fetchAll)
+        divElm.querySelector('.add-review-button').addEventListener('click', this.addReviewForm)
+        divElm.querySelector('.show-instructions-button').addEventListener('click', this.showInstructions)
         
         
     }
@@ -103,17 +122,13 @@ class Recipe {
             formContainer.querySelector(".new-review-form").addEventListener("submit", ReviewApi.create)
         }
 
-
-
-
-
-
+// GO BACK AFETR GOING OVER INGREDIENTS
 
         static toggle(event) {
-            const span = event.target 
-            const recipeId = span.dataset.recipeId
-            if (span.classList.contains("open")){
-                span.classList.remove("open")
+            const spanElm = event.target 
+            const recipeId = spanElm.dataset.recipeId
+            if (spanElm.classList.contains("open")){
+                spanElm.classList.remove("open")
                 const ingredientsContainer = document.querySelector(`#recipe-${recipeId} .ingredients-container`)
                 ingredientsContainer.innerHTML = " "
                  const formContainer = document.querySelector(`#recipe-${recipeId} .form-container`)
@@ -122,7 +137,7 @@ class Recipe {
                  }
             }
             else{
-                span.classList.add("open")
+                spanElm.classList.add("open")
                 IngredientApi.fetchAll(recipeId)
             }
         }
@@ -143,7 +158,9 @@ class Recipe {
             } else {
                 instructionsContainer.classList.add('open')
                 instructionsContainer.innerHTML = `
-                <p class="recipe-instruction"> ${recipe.instructions} </p>
+                    <p class="recipe-instruction">
+                        ${recipe.instructions} 
+                    </p>
                 `
             }
             

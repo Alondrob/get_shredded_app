@@ -7,7 +7,7 @@ class IngredientApi {
         .then(ingredients => ingredients.forEach(ingredientData => {
             const ingredient = new Ingredient(ingredientData)
             // console.log(ingredient)
-            ingredient.render()
+            ingredient.renderIngredient()
         }))
 
     }

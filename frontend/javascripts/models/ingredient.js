@@ -16,41 +16,54 @@ class Ingredient{
         Ingredient.all.push(this)
     }
 
-    render() {
-        let div
+    renderIngredient() {
+        let divElm
         if (document.querySelector(`#ingredient-${this.id}`)){
             document.querySelector(`#ingredient-${this.id}`).innerHTML = ""
-            div = document.querySelector(`#ingredient-${this.id}`)
+            divElm = document.querySelector(`#ingredient-${this.id}`)
             
         }
         else {
-            div = document.createElement('div')
-            div.id = `ingredient-${this.id}`
-            div.classList.add('ingredient')
+            divElm = document.createElement('div')
+            divElm.id = `ingredient-${this.id}`
+            divElm.classList.add('ingredient')
         }
 
 
 
-        const container = document.querySelector(`#recipe-${this.recipeId} .ingredients-container`)
-        div.innerHTML = `
-           <p> name: ${this.name}&nbsp;&nbsp; <button data-ingredient-id="${this.id}" class="edit-ingredient-button"> Edit Ingredient </button><button data-ingredient-id="${this.id}" class="delete-ingredient-button"> Remove Ingredient </button>
+        const ingredientsContainer = document.querySelector(`#recipe-${this.recipeId} .ingredients-container`)
+        divElm.innerHTML = `
+           <p>  
+                name: ${this.name}&nbsp;&nbsp; 
+                <button data-ingredient-id="${this.id}" class="edit-ingredient-button"> 
+                        Edit Ingredient 
+                </button>
+
+                <button data-ingredient-id="${this.id}" class="delete-ingredient-button">    
+                        Remove Ingredient 
+                </button>
            
            </p>
+
            <p> weight: ${this.weight} </p>
+
            <p> carb: ${this.carb} </p>
+
            <p> protein: ${this.protein} </p>
+
            <p> fat: ${this.fat} </p>
+           
            <div class="edit-form-container"> </div>
         
         `
         if (!document.querySelector(`#ingredient-${this.id}`))
              {
-            container.append(div)
+            ingredientsContainer.append(divElm)
        }
            
-        div.querySelector(".delete-ingredient-button").addEventListener('click', IngredientApi.delete)
+        divElm.querySelector(".delete-ingredient-button").addEventListener('click', IngredientApi.delete)
 
-        div.querySelector(".edit-ingredient-button").addEventListener('click', Ingredient.edit )
+        divElm.querySelector(".edit-ingredient-button").addEventListener('click', Ingredient.edit )
         
         
     }
