@@ -29,7 +29,10 @@ class Review {
 
         const container = document.querySelector(`#recipe-${this.recipeId} .reviews-container`)
         div.innerHTML = `
-           <p>  ${this.content}&nbsp;&nbsp; <button data-review-id="${this.id}" class="edit-review-button"> Edit Review </button>
+           <p>  ${this.content}&nbsp;&nbsp; 
+                <button data-review-id="${this.id}" class="edit-review-button"> 
+                    Edit Review 
+                </button>
            </p>
        
            <div class="edit-form-container"> </div>

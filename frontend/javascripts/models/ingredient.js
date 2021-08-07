@@ -45,15 +45,15 @@ class Ingredient{
            
            </p>
 
-           <p> weight: ${this.weight} </p>
+            <p> weight: ${this.weight} </p>
 
-           <p> carb: ${this.carb} </p>
+            <p> carb: ${this.carb} </p>
 
-           <p> protein: ${this.protein} </p>
+            <p> protein: ${this.protein} </p>
 
-           <p> fat: ${this.fat} </p>
-           
-           <div class="edit-form-container"> </div>
+            <p> fat: ${this.fat} </p>
+
+            <div class="edit-form-container"> </div>
         
         `
         if (!document.querySelector(`#ingredient-${this.id}`))
@@ -71,16 +71,22 @@ class Ingredient{
            const editFormContainer = document.querySelector(`#ingredient-${this.id} .edit-form-container`)
            editFormContainer.innerHTML = `
             <form class="edit-ingredient-form" data-ingredient-id="${this.id}">
-                 <input type="hidden" class="recipe-id" value="${this.recipeId}">
+
+                    <input type="hidden" class="recipe-id" value="${this.recipeId}">
                     <label for="name"> name: </label>
+
                     <input type="text" class="name" name="name" value="${this.name}"/>
-                      <label for="weight"> Weight: </label>
+                    <label for="weight"> Weight: </label>
+
                     <input type="number" step="0.01" class="weight" name="weight" value="${this.weight}"/>
-                      <label for="carb"> Carb: </label>
+                    <label for="carb"> Carb: </label>
+
                     <input type="number" step="0.01" class="carb" name="carb" value="${this.carb}"/>
-                      <label for="protein"> Protein: </label>
+                    <label for="protein"> Protein: </label>
+
                     <input type="number" step="0.01" class="protein" name="protein" value="${this.protein}"/>
                     <label for="fat"> Fat: </label>
+
                     <input type="number" step="0.01" class="fat" name="fat" value="${this.fat}"/>
                     <input type="submit"/>
             </form>
