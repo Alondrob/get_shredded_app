@@ -3,7 +3,7 @@ class Ingredient{
 
     static all = []
 
-    constructor( {id, name, weight, carb, protein, fat, calories, recipe_id}) {
+    constructor( {id, name, weight, carb, protein, fat, calories, recipe_id, time}) {
         this.id = id
         this.name = name
         this.weight = weight
@@ -12,6 +12,7 @@ class Ingredient{
         this.fat = fat
         this.calories = calories
         this.recipeId = recipe_id
+        this.time = time
 
         Ingredient.all.push(this)
     }
@@ -34,7 +35,7 @@ class Ingredient{
         const ingredientsContainer = document.querySelector(`#recipe-${this.recipeId} .ingredients-container`)
         divElm.innerHTML = `
            <p>  
-                name: ${this.name}&nbsp;&nbsp; 
+                
                 <button data-ingredient-id="${this.id}" class="edit-ingredient-button"> 
                         Edit Ingredient 
                 </button>
@@ -42,8 +43,9 @@ class Ingredient{
                 <button data-ingredient-id="${this.id}" class="delete-ingredient-button">    
                         Remove Ingredient 
                 </button>
-           
+
            </p>
+            <p class="ingredient-name">  Ingredient Name: ${this.name} </p>
 
             <p> weight: ${this.weight} </p>
 
@@ -52,6 +54,8 @@ class Ingredient{
             <p> protein: ${this.protein} </p>
 
             <p> fat: ${this.fat} </p>
+
+            <p> created at: ${this.time} </p>
 
             <div class="edit-form-container"> </div>
         

@@ -19,7 +19,7 @@ class Recipe {
         divElm.id = `recipe-${this.id}`
         divElm.classList.add('recipe')
         divElm.innerHTML = `
-           <h3> 
+           <h3 > 
                 <span data-recipe-id="${this.id}" class="recipe-name">
                     ${this.name} => Calories:  ${this.totalCalories}
                 </span>
@@ -147,19 +147,7 @@ class Recipe {
         }
     }
 
-    // static toggle(event) {
-    //     const spanElm = event.target
-    //     const recipeId = spanElm.dataset.recipeId
-    //     const ingredientsContainer = document.querySelector(`#recipe-${recipeId} .ingredients-container`)
-    //     if (ingredientsContainer.style.display == "block") {
-    //         ingredientsContainer.style.display = "none"
-    //     } else {
-    //         if (ingredientsContainer.innerHTML.length == 0) {
-    //             IngredientApi.fetchAll(recipeId)
-    //         }
-    //         ingredientsContainer.style.display = "block"
-    //     }
-    // }
+ 
 
 
 

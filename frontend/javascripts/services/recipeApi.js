@@ -16,15 +16,16 @@ class RecipeApi {
     static create(event) 
     { 
         event.preventDefault()
-        const form = event.target
+        const formElm = event.target
         // const form = document.querySelector('#new-recipe-form')
         const data = {
             recipe: {
-                name: form.querySelector(".name").value,
-                image: form.querySelector(".image").value,
-                instructions: form.querySelector(".instructions").value
+                name: formElm.querySelector(".name").value,
+                image: formElm.querySelector(".image").value,
+                instructions: formElm.querySelector(".instructions").value
             }
         }
+        
         newRecipeForm().reset()
         fetch('http://127.0.0.1:3000/recipes', {
             method: 'post', 

@@ -91,7 +91,27 @@ textarea {
 }
 
 
+/* .edit-ingredient-button {
+    background-color: #04AA6D; 
+   height: 50px; 
+  /* width: 150px; */
+  /* border-radius: 50%;
+  border: 1px solid red; 
+} */ 
 
+.ingredient-name {
+    font-style: italic;
+    color: rgb(20, 17, 66);
+
+}
+
+.recipe-instruction {
+  margin: auto;
+  width: 50%;
+  border: 3px solid black;
+  padding: 10px;
+  font-weight: bold;
+}
 
 
 /* body {
