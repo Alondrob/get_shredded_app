@@ -4,7 +4,7 @@ class Recipe {
     // how the static all =[] works 
     static all = []
 
-    constructor( {id, name, image, total_calories, instructions}){
+    constructor({ id, name, image, total_calories, instructions }) {
         this.id = id
         this.name = name
         this.image = image
@@ -19,14 +19,16 @@ class Recipe {
         divElm.id = `recipe-${this.id}`
         divElm.classList.add('recipe')
         divElm.innerHTML = `
-            <h3> 
+           <h3> 
                 <span data-recipe-id="${this.id}" class="recipe-name">
                     ${this.name} => Calories:  ${this.totalCalories}
                 </span>
             </h3>
+          
         `
         if (this.image) {
-            divElm.innerHTML += `<img src="${this.image}" alt="${this.name}" width="500" /><br>`
+            divElm.innerHTML += `<img src="${this.image}" alt="${this.name}"  class="recipe-image" /><br>`
+            //call it a class and target it in the css
         }
         divElm.innerHTML += `
             
@@ -52,9 +54,11 @@ class Recipe {
             </button>
 
             <div class="reviews-container"></div>
-            <div class="ingredients-container"></div>
+            <!-- comment changed -->
+            <div class="ingredients-container" > </div>
             <div class="instructions-container"></div>
             
+            <!-- <div class="ingredients-container" style="display:none"></div> -->
 
 
         `
@@ -66,21 +70,21 @@ class Recipe {
         divElm.querySelector('.get-review-button').addEventListener('click', ReviewApi.fetchAll)
         divElm.querySelector('.add-review-button').addEventListener('click', this.addReviewForm)
         divElm.querySelector('.show-instructions-button').addEventListener('click', this.showInstructions)
-        
-        
+
+
     }
 
-        addForm(event) {
-            const recipeId = event.target.dataset.recipeId
-            const container = document.querySelector(`#recipe-${recipeId}`)
-            const formContainer = document.createElement('div')
-            // we create classlist on formContainer variable to add class to an element
-            // in order to target it , targeting it to manipualte it 
-            formContainer.classList.add("form-container")
-            if (container.querySelector('.new-ingredient-form')){
-                return
-            }
-            formContainer.innerHTML = `
+    addForm(event) {
+        const recipeId = event.target.dataset.recipeId
+        const container = document.querySelector(`#recipe-${recipeId}`)
+        const formContainer = document.createElement('div')
+        // we create classlist on formContainer variable to add class to an element
+        // in order to target it , targeting it to manipualte it 
+        formContainer.classList.add("form-container")
+        if (container.querySelector('.new-ingredient-form')) {
+            return
+        }
+        formContainer.innerHTML = `
                 <form class="new-ingredient-form">
                 <input type="hidden" class="recipe-id" value="${recipeId}">
                     <label for="name"> name: </label>
@@ -96,21 +100,21 @@ class Recipe {
                     <input type="submit">
                 </form>
             `
-            container.append(formContainer)
-            formContainer.querySelector(".new-ingredient-form").addEventListener("submit", IngredientApi.create)
-        }
+        container.append(formContainer)
+        formContainer.querySelector(".new-ingredient-form").addEventListener("submit", IngredientApi.create)
+    }
 
-        addReviewForm(event) {
-            const recipeId = event.target.dataset.recipeId
-            const container = document.querySelector(`#recipe-${recipeId}`)
-            const formContainer = document.createElement('div')
-            // we create classlist on formContainer variable to add class to an element
-            // in order to target it , targeting it to manipualte it 
-            formContainer.classList.add("form-container")
-            if (container.querySelector('.new-review-form')) {
-                return
-            }
-            formContainer.innerHTML = `
+    addReviewForm(event) {
+        const recipeId = event.target.dataset.recipeId
+        const container = document.querySelector(`#recipe-${recipeId}`)
+        const formContainer = document.createElement('div')
+        // we create classlist on formContainer variable to add class to an element
+        // in order to target it , targeting it to manipualte it 
+        formContainer.classList.add("form-container")
+        if (container.querySelector('.new-review-form')) {
+            return
+        }
+        formContainer.innerHTML = `
                 <form class="new-review-form">
                 <input type="hidden" class="recipe-id" value="${recipeId}">
                     <label for="content"></label>
@@ -118,52 +122,69 @@ class Recipe {
                     <input type="submit">
                 </form>
             `
-            container.append(formContainer)
-            formContainer.querySelector(".new-review-form").addEventListener("submit", ReviewApi.create)
-        }
+        container.append(formContainer)
+        formContainer.querySelector(".new-review-form").addEventListener("submit", ReviewApi.create)
+    }
 
-// GO BACK AFETR GOING OVER INGREDIENTS
-
-        static toggle(event) {
-            const spanElm = event.target 
-            const recipeId = spanElm.dataset.recipeId
-            if (spanElm.classList.contains("open")){
-                spanElm.classList.remove("open")
-                const ingredientsContainer = document.querySelector(`#recipe-${recipeId} .ingredients-container`)
-                ingredientsContainer.innerHTML = " "
-                 const formContainer = document.querySelector(`#recipe-${recipeId} .form-container`)
-                 if (formContainer) {
-                     formContainer.remove()
-                 }
-            }
-            else{
-                spanElm.classList.add("open")
-                IngredientApi.fetchAll(recipeId)
-            }
+    // GO BACK AFETR GOING OVER INGREDIENTS
+    // Consider using CSS element.style.display = none / block
+    // instead of innerHTML changes.
+    static toggle(event) {
+        const spanElm = event.target 
+        const recipeId = spanElm.dataset.recipeId
+        if (spanElm.classList.contains("open")){
+            spanElm.classList.remove("open")
+            const ingredientsContainer = document.querySelector(`#recipe-${recipeId} .ingredients-container`)
+            ingredientsContainer.innerHTML = " "
+             const formContainer = document.querySelector(`#recipe-${recipeId} .form-container`)
+             if (formContainer) {
+                 formContainer.remove()
+             }
         }
+        else{
+            spanElm.classList.add("open")
+            IngredientApi.fetchAll(recipeId)
+        }
+    }
+
+    // static toggle(event) {
+    //     const spanElm = event.target
+    //     const recipeId = spanElm.dataset.recipeId
+    //     const ingredientsContainer = document.querySelector(`#recipe-${recipeId} .ingredients-container`)
+    //     if (ingredientsContainer.style.display == "block") {
+    //         ingredientsContainer.style.display = "none"
+    //     } else {
+    //         if (ingredientsContainer.innerHTML.length == 0) {
+    //             IngredientApi.fetchAll(recipeId)
+    //         }
+    //         ingredientsContainer.style.display = "block"
+    //     }
+    // }
+
+
 
     static findById(id) {
         return Recipe.all.find(recipe => recipe.id === parseInt(id))
     }
 
 
-        showInstructions(event) {
-            const recipeId = event.target.dataset.recipeId
-            const recipe = Recipe.findById(recipeId)
-            const recipeContainer = document.querySelector(`#recipe-${recipeId}`)
-            const instructionsContainer = recipeContainer.querySelector('.instructions-container')
-            if(instructionsContainer.classList.contains('open')) {
-                instructionsContainer.classList.remove('open')
-                instructionsContainer.innerHTML = ""
-            } else {
-                instructionsContainer.classList.add('open')
-                instructionsContainer.innerHTML = `
+    showInstructions(event) {
+        const recipeId = event.target.dataset.recipeId
+        const recipe = Recipe.findById(recipeId)
+        const recipeContainer = document.querySelector(`#recipe-${recipeId}`)
+        const instructionsContainer = recipeContainer.querySelector('.instructions-container')
+        if (instructionsContainer.classList.contains('open')) {
+            instructionsContainer.classList.remove('open')
+            instructionsContainer.innerHTML = ""
+        } else {
+            instructionsContainer.classList.add('open')
+            instructionsContainer.innerHTML = `
                     <p class="recipe-instruction">
                         ${recipe.instructions} 
                     </p>
                 `
-            }
-            
-
         }
+
+
+    }
 }

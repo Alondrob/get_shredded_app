@@ -3,15 +3,15 @@ class IngredientApi {
 
     static fetchAll(recipeId) {
         fetch(`http://127.0.0.1:3000/recipes/${recipeId}/ingredients`)
-        .then(res => res.json())
-        .then(ingredients => ingredients.forEach(ingredientData => {
-            const ingredient = new Ingredient(ingredientData)
-            // console.log(ingredient)
-            ingredient.renderIngredient()
-        }))
+            .then(res => res.json())
+            .then(ingredients => ingredients.forEach(ingredientData => {
+                const ingredient = new Ingredient(ingredientData)
+                // console.log(ingredient)
+                ingredient.renderIngredient()
+            }))
 
     }
-    
+
     static create(event) {
         event.preventDefault()
         const form = event.target
@@ -33,11 +33,11 @@ class IngredientApi {
             },
             body: JSON.stringify(data)
         })
-            .then( res => res.json())
+            .then(res => res.json())
             .then(ingredientData => {
                 const ingredient = new Ingredient(ingredientData)
-                ingredient.render()
-            } )
+                ingredient.renderIngredient()
+            })
     }
     static delete(event) {
         const deleteButton = event.target
@@ -50,7 +50,7 @@ class IngredientApi {
     static update(event) {
 
         event.preventDefault()
-      
+
         const form = event.target
         const ingredientId = form.dataset.ingredientId
         const data = {
@@ -76,10 +76,10 @@ class IngredientApi {
             .then(ingredientData => {
                 const ingredient = Ingredient.findById(ingredientData.id)
                 ingredient.set(ingredientData)
-                ingredient.render()
+                ingredient.renderIngredient()
             })
 
     }
 
-    
+
 }

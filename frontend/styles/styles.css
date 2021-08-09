@@ -85,6 +85,10 @@ textarea {
     background-color: rgb(237, 223, 100);
 }
 
+.recipe-image {
+ width: 500px;
+ height: 500px;
+}
 
 
 
