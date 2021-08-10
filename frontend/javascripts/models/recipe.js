@@ -87,16 +87,22 @@ class Recipe {
         formContainer.innerHTML = `
                 <form class="new-ingredient-form">
                 <input type="hidden" class="recipe-id" value="${recipeId}">
+
                     <label for="name"> name: </label>
                     <input type="text" class="name" name="name">
-                      <label for="weight"> Weight: </label>
+
+                    <label for="weight"> Weight: </label>
                     <input type="number" step="0.01" class="weight" name="weight">
-                      <label for="carb"> Carb: </label>
+
+                    <label for="carb"> Carb: </label>
                     <input type="number" step="0.01" class="carb" name="carb">
-                      <label for="protein"> Protein: </label>
+
+                    <label for="protein"> Protein: </label>
                     <input type="number" step="0.01" class="protein" name="protein">
+
                     <label for="fat"> Fat: </label>
                     <input type="number" step="0.01" class="fat" name="fat">
+                    
                     <input type="submit">
                 </form>
             `

@@ -95,7 +95,7 @@ class Ingredient{
                     <input type="submit"/>
             </form>
            `
-           const editIngredientForm = editFormContainer.querySelector(".edit-ingredient-form")
+           const apple = editFormContainer.querySelector(".edit-ingredient-form")
            editFormContainer.addEventListener("submit", IngredientApi.update)
         }
 

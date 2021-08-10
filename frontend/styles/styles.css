@@ -113,6 +113,11 @@ textarea {
   font-weight: bold;
 }
 
+label {
+    font-weight: bold;
+    font-style: inherit;
+    text-emphasis-color: red;
+}
 
 /* body {
  background-image: url("https://www.freepik.com/free-vector/hand-drawn-delicious-food-background_5107183.htm#page=1&query=food%20background&position=0");
