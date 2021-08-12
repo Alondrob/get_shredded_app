@@ -37,6 +37,7 @@ class IngredientApi {
             .then(ingredientData => {
                 const ingredient = new Ingredient(ingredientData)
                 ingredient.renderIngredient()
+                RecipeApi.updateCalories(ingredient.recipeId)
             })
     }
     static delete(event) {
@@ -46,6 +47,12 @@ class IngredientApi {
         fetch(`http://127.0.0.1:3000/ingredients/${ingredientId}`, {
             method: 'delete'
         })
+         .then(response => response.json())
+         .then(json => 
+            {
+             RecipeApi.updateCalories(json.recipe_id)
+            }
+         )
     }
     static update(event) {
 
@@ -77,6 +84,7 @@ class IngredientApi {
                 const ingredient = Ingredient.findById(ingredientData.id)
                 ingredient.set(ingredientData)
                 ingredient.renderIngredient()
+                RecipeApi.updateCalories(ingredient.recipeId)
             })
 
     }

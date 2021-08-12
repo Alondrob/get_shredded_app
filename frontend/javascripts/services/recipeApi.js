@@ -49,6 +49,18 @@ class RecipeApi {
                 method: 'delete'
             })
         }
+
+        static updateCalories(recipeId) 
+        {
+           fetch(`http://127.0.0.1:3000/recipes/${recipeId}`) 
+           .then(response => response.json())
+           .then(recipe => 
+            {
+                const recipeContainer = document.querySelector(`#recipe-${recipe.id} .recipe-name`)
+                recipeContainer.textContent = `${recipe.name} => Calories: ${recipe.total_calories}` 
+            }
+        )
+        }
         
 }
 
