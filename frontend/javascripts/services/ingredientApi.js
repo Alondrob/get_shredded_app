@@ -43,6 +43,7 @@ class IngredientApi {
     static delete(event) {
         const deleteButton = event.target
         const ingredientId = deleteButton.dataset.ingredientId
+        debugger
         document.querySelector(`#ingredient-${ingredientId}`).remove()
         fetch(`http://127.0.0.1:3000/ingredients/${ingredientId}`, {
             method: 'delete'

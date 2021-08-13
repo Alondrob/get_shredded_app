@@ -23,7 +23,7 @@ class IngredientsController < ApplicationController
 
      def destroy
         ingredient = Ingredient.find(params[:id])
-        recipe_id = Ingredient.recipe_id
+        recipe_id = ingredient.recipe_id
         ingredient.destroy
         render json: {recipe_id: recipe_id}
     end
