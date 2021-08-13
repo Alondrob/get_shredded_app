@@ -53,6 +53,12 @@ class Recipe {
                 Instructions
             </button>
 
+            <button type="button" data-recipe-id="${this.id}" class="add-olive-oil">
+                Add Olive Oil
+            </button>
+
+
+
             <div class="reviews-container"></div>
             <!-- comment changed -->
             <div class="ingredients-container" > </div>
@@ -71,8 +77,18 @@ class Recipe {
         divElm.querySelector('.add-review-button').addEventListener('click', this.addReviewForm)
         divElm.querySelector('.show-instructions-button').addEventListener('click', this.showInstructions)
 
+        divElm.querySelector('.add-olive-oil').addEventListener('click', this.addOliveOil)
+
 
     }
+
+    addOliveOil(event)
+        {
+        const recipeId = event.target.dataset.recipeId
+            ingredient = document.querySelector('.add-olive-oil')
+            // ingredient.append(formContainer)
+            console.log(ingredient)
+        }
 
     addForm(event) {
         const recipeId = event.target.dataset.recipeId
