@@ -89,5 +89,40 @@ class IngredientApi {
 
     }
 
+    static createOliveOil(recipeId)
+        {
+            const data = 
+            {
+                ingredient: 
+                {
+                    name: 'olive oil',
+                    recipe_id: recipeId,
+                    weight: 5,
+                    carb: 0,
+                    protein: 0,
+                    fat: 1,
+
+                }
+            }
+        fetch("http://127.0.0.1:3000/ingredients",
+            {
+                method: "post",
+                headers: 
+                {
+                "content-type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+        
+        )
+        .then(response => response.json())
+        .then.(ingredientData => 
+            {
+                const newIngredient = new Ingredient(ingredientData)
+                ingredient.renderIngredient()
+                RecipeApi.updateCalories(ingredient.recipeId)
+            })
+        }
+
 
 }

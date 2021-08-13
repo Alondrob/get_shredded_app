@@ -85,10 +85,7 @@ class Recipe {
     addOliveOil(event)
         {
         const recipeId = event.target.dataset.recipeId
-        const container = document.querySelector(`#recipe-${recipeId}`)
-        const formContainer = document.querySelector('div')
-            // ingredient.append(formContainer)
-            console.log(ingredient)
+         IngredientApi.createOliveOil(recipeId)
         }
 
     addForm(event) {
