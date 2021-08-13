@@ -1,7 +1,7 @@
 const recipesContainer = () => document.querySelector('#recipes-container')
 const newRecipeForm = () => document.querySelector('#new-recipe-form')
 
-
+const filterButton = () => document.querySelector('#filter')
 
 
 document.addEventListener("DOMContentLoaded", () => 
@@ -9,25 +9,33 @@ document.addEventListener("DOMContentLoaded", () =>
     
     RecipeApi.fetchAll()
     newRecipeForm().addEventListener('submit', RecipeApi.create)
+    filterButton().addEventListener('click', filterRecipes)
    
 })
 
 
 
 
-// function filterRecipes() {
-//    Recipe.all.forEach(recipeCalories => 
-//     { recipeCalories.totalCalories
 
-//    const cal = recipeCalories.totalCalories
 
-//    if cal > 2000
-//    return cal
 
-//    else
-//    ""
-   
-// } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

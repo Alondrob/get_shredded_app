@@ -91,6 +91,7 @@ textarea {
 }
 
 
+
 /* .edit-ingredient-button {
     background-color: #04AA6D; 
    height: 50px; 
@@ -123,3 +124,7 @@ label {
  background-image: url("https://www.freepik.com/free-vector/hand-drawn-delicious-food-background_5107183.htm#page=1&query=food%20background&position=0");
  background-color: #cccccc;
 } */
+
+.color {
+    background-color: fuchsia;
+}
