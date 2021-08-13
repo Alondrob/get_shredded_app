@@ -125,6 +125,11 @@ label {
  background-color: #cccccc;
 } */
 
-.color {
-    background-color: fuchsia;
+.add-olive-oil
+{
+    font-size: 16px;
+    background-color: rgba(184, 138, 170, 0.472);
+    padding: 20px;
+    border-radius: 50px;
+    color: olive;
 }
