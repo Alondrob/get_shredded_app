@@ -116,9 +116,9 @@ class IngredientApi {
         
         )
         .then(response => response.json())
-        .then.(ingredientData => 
+        .then(ingredientData => 
             {
-                const newIngredient = new Ingredient(ingredientData)
+                const ingredient = new Ingredient(ingredientData)
                 ingredient.renderIngredient()
                 RecipeApi.updateCalories(ingredient.recipeId)
             })
